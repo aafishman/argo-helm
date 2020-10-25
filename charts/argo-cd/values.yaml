@@ -5,11 +5,11 @@ nameOverride: argocd
 fullnameOverride: ""
 
 # Optional CRD installation for those without Helm hooks
-installCRDs: true
+installCRDs: false
 
 global:
   image:
-    repository: argoproj/argocd
+    repository: alinbalutoiu/argocd
     tag: v1.7.6
     imagePullPolicy: IfNotPresent
   securityContext: {}
@@ -455,7 +455,7 @@ server:
     annotations: {}
 
   ingress:
-    enabled: false
+    enabled: true
     annotations: {}
     labels: {}
 
@@ -464,8 +464,8 @@ server:
     ## Secrets must be manually created in the namespace
     ##
     hosts:
-      []
-      # - argocd.example.com
+      # []
+      - argocd.dgafish.com
     paths:
       - /
     extraPaths:
@@ -479,11 +479,11 @@ server:
       # - secretName: argocd-example-tls
       #   hosts:
       #     - argocd.example.com
-    https: false
+    https: true
   # dedicated ingess for gRPC as documented at
   # https://argoproj.github.io/argo-cd/operator-manual/ingress/
   ingressGrpc:
-    enabled: false
+    enabled: true
     annotations: {}
     labels: {}
 
@@ -492,8 +492,8 @@ server:
     ## Secrets must be manually created in the namespace
     ##
     hosts:
-      []
-      # - argocd.example.com
+      # []
+      - argocd.dgafish.com
     paths:
       - /
     extraPaths:
@@ -507,7 +507,7 @@ server:
       # - secretName: argocd-example-tls
       #   hosts:
       #     - argocd.example.com
-    https: false
+    https: true
 
   # Create a OpenShift Route with SSL passthrough for UI and CLI
   # Consider setting 'hostname' e.g. https://argocd.apps-crc.testing/ using your Default Ingress Controller Domain
